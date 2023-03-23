@@ -14,11 +14,19 @@ public class FlightController {
     FlightService flightService;
 
     @GetMapping("/")
-    public List<Flight> getAllFlights(){
+    public List<Flight> getFlightsControlled(){
         return flightService.getFlights();
     }
 
+    @GetMapping("/flight{id}")
+    public Flight getFlightByIdControlled(@PathVariable Long id){
+        return  flightService.getFlightById(id);
+    }
 
-
+    /**POST is used for insert new entity*/
+    @PostMapping("/new")
+    public Flight saveFlightControlled(@RequestBody Flight flight){
+        return flightService.createFlight(flight);
+    }
 
 }
