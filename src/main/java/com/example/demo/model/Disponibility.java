@@ -15,29 +15,22 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Flight {
+public class Disponibility {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "_ziua")
-    private String ziua; //format "dd-MM-yyyy"
+    @OneToOne(mappedBy = "disponibility")
+    private Flight flight;
 
-    @Column(name = "_from")
-    private String from;
+    @Column(name = "_eco")
+    private Long nrEco;
 
-    @Column(name = "_to")
-    private String to;
+    @Column(name = "_bussiness")
+    private Long nrBus;
 
-
-
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "_iddisp", referencedColumnName = "id")
-    private Disponibility disponibility;
-
-
-
+    @Column(name = "_first")
+    private Long nrFirst;
 
 
 }
-

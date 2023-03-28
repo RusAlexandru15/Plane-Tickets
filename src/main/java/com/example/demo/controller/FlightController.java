@@ -38,7 +38,7 @@ public class FlightController {
     }
 
 
-    /**POST is used for insert new entity*/
+    //POST is used for insert new entity
     @PostMapping("/flights/new")
     public Flight saveFlightControlled(@RequestBody Flight flight){
 
