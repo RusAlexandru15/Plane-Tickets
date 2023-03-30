@@ -15,13 +15,11 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Disponibility {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long iddisp;
 
-    @OneToOne(mappedBy = "disponibility")
-    private Flight flight;
 
     @Column(name = "_eco")
     private Long nrEco;

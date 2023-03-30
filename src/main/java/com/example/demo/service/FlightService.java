@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Flight;
+import com.example.demo.repository.DispRepository;
 import com.example.demo.repository.FlightRepository;
+import com.example.demo.utilities.DispManager;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+    @Autowired
+    private DispRepository dispRepository;
+
 
     /**selects all the flights from DB*/
     public List<Flight> getFlights(){
@@ -39,10 +44,17 @@ public class FlightService {
         return flightRepository.findByArrival(to);
     }
 
+
     /**create new flight*/
-    public Flight createFlight(Flight flight){
+    public Flight createFlight(Flight flight)
+    {
+
+        DispManager dispGenerator=new DispManager();
+        dispGenerator.createDisponibility(flight,dispRepository);
+
         return flightRepository.save(flight);
     }
+
 
     /**updates a flight by  id */
     /** id and iddisp cannot be updated!!!*/
@@ -67,9 +79,13 @@ public class FlightService {
         return "Flight "+id+" updated";
     }
 
-    /** delete a flight by id */
+
+    /** delete a flight by id and its disponibility*/
     public String deleteFlightByID(Long id) {
+        Flight currentFlight=flightRepository.findById(id).get();
+        Long iddisp=currentFlight.getDisponibilityID();
       flightRepository.deleteById(id);
+      dispRepository.deleteById(iddisp);
       return "Flight " +id + " was deleted";
     }
 

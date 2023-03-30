@@ -25,8 +25,7 @@ Tabela Zbor contine id-ul de zbor(cod unic) ,ziua decolarii,locul de decolare si
 Tabela Disponibilitate stocheaza numarul de locuri disponibile pentru un zbor din fiecare clasa si pretul de baza.
 Pretul de baza este pentru clasa economica.Clasa bussiness va fi cu 80% mai scumpa,iar first class cu 120% din pretul de baza.
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
+
 
 
 

@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.repository.DispRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +31,8 @@ public class Flight {
     private String to;
 
 
-
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "_iddisp", referencedColumnName = "id")
-    private Disponibility disponibility;
+    @Column(name = "iddisp")
+    private Long disponibilityID;
 
 
 
