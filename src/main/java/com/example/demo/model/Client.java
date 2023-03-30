@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,27 +15,17 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Flight {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idZbor;
+    private Long idClient;
 
-    @Column(name = "_ziua")
-    private String ziua; //format "dd-MM-yyyy"
+    @Column(name = "_nume")
+    private String name;
 
-    @Column(name = "_from")
-    private String from;
+    @Column(name = "_parola")
+    private String password;
 
-    @Column(name = "_to")
-    private String to;
-
-
-    @Column(name = "iddisp")
-    private Long disponibilityID;
-
-
-
-
-
+    @Column(name = "_locatia")
+    private String location;
 }
-

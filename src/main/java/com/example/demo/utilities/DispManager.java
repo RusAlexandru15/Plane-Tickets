@@ -1,7 +1,10 @@
 package com.example.demo.utilities;
 
+
+import com.example.demo.model.Client;
 import com.example.demo.model.Disponibility;
 import com.example.demo.model.Flight;
+import com.example.demo.model.Ticket;
 import com.example.demo.repository.DispRepository;
 
 
@@ -17,6 +20,7 @@ public class DispManager {
         disponibility.setNrFirst(100L);
         dispRepository.save(disponibility);
     }
+
 
 
 

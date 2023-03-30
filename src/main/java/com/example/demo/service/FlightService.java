@@ -48,7 +48,6 @@ public class FlightService {
     /**create new flight*/
     public Flight createFlight(Flight flight)
     {
-
         DispManager dispGenerator=new DispManager();
         dispGenerator.createDisponibility(flight,dispRepository);
 
