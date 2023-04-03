@@ -18,6 +18,7 @@ public class DispManager {
         disponibility.setNrEco(100L);
         disponibility.setNrBus(100L);
         disponibility.setNrFirst(100L);
+        disponibility.setBasePrice(120L);
         dispRepository.save(disponibility);
     }
 

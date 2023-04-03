@@ -12,6 +12,7 @@ public class TicketManager {
     public void addElement(priceTickets item){
        this.tickets.add(item);
     }
+
     public void removeElement(priceTickets item){
         this.tickets.remove(item);
     }

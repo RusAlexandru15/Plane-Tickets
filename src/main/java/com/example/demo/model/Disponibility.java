@@ -30,5 +30,7 @@ public class Disponibility {
     @Column(name = "_first")
     private Long nrFirst;
 
+    @Column (name="basePrice")
+    private Long basePrice;
 
 }
