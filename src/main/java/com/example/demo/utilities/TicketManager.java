@@ -3,22 +3,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketManager {
-    private List<priceTickets> tickets;
+    private List<PriceTickets> tickets;
 
     public TicketManager(){
         this.tickets=new ArrayList<>();
     }
 
-    public void addElement(priceTickets item){
+    public void addElement(PriceTickets item){
        this.tickets.add(item);
     }
 
-    public void removeElement(priceTickets item){
+    public void removeElement(PriceTickets item){
         this.tickets.remove(item);
     }
 
 
-    public List<priceTickets> getTickets() {
+    public List<PriceTickets> getTickets() {
         return this.tickets;
     }
 

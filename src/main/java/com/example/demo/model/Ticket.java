@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import com.example.demo.utilities.priceTickets;
+import com.example.demo.utilities.PriceTickets;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Ticket implements priceTickets {
+public class Ticket implements PriceTickets {
 
     @Id //nu folosesc la nimic idBilet
     @GeneratedValue(strategy = GenerationType.AUTO)

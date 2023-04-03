@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.Ticket;
 import com.example.demo.repository.TicketRepository;
 import com.example.demo.utilities.TicketManager;
-import com.example.demo.utilities.priceTickets;
+import com.example.demo.utilities.PriceTickets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class TicketService {
 
             ticketManager.increadsePrices(0.5F); //scumpire cu 50%
 
-            for (priceTickets element : ticketManager.getTickets()) {
+            for (PriceTickets element : ticketManager.getTickets()) {
                 Ticket currentTicket = (Ticket) element;
                 ticketRepository.save(currentTicket);
             }
