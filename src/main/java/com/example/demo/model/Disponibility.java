@@ -20,7 +20,6 @@ public class Disponibility {
     @Id
     private Long iddisp;
 
-
     @Column(name = "_eco")
     private Long nrEco;
 

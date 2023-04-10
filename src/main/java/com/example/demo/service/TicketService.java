@@ -38,6 +38,7 @@ public class TicketService {
         if (tickets.size() == 0)
             return "Nu sunt bilete pentru zborul " + id;
         else {
+            //singleton principle
             if (ticketManager == null) {
                 ticketManager = new TicketManager();
             }
@@ -52,6 +53,5 @@ public class TicketService {
             return "Toate bilete zborului " + id + " scumpite cu succes!";
         }
     }
-
 
 }
