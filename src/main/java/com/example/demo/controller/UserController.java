@@ -16,12 +16,13 @@ public class UserController {
     UserService userService;
 
 
+    /** returns all users from the database */
     @GetMapping("/users")
     public List<User> getUsersControlled(){
         return userService.getUsers();
     }
 
-
+    /** creates a new user with information received from a requestBody */
     @PostMapping("/users/new")
     public User saveUserControlled(@RequestBody User user){return userService.createUser(user);}
 

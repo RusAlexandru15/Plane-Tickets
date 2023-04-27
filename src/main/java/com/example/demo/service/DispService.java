@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/** service class for the flight's disponibility */
 @Service
 public class DispService {
     @Autowired

@@ -4,12 +4,12 @@ import com.example.demo.model.Flight;
 
 import java.util.*;
 
-
+/** the class that builds the graph in which BFS  algorithm is applied for finding the indirect route */
 public class FlightGraph {
     private List<FlightNode> nodes;
 
     /**
-     * in constructor generez graful(noduri+legaturi vecini)
+     * in the constructor, it generates the graph (nodes + neighboring links)
      */
     public FlightGraph(List<Flight> flights) {
         this.nodes = new ArrayList<>();
@@ -22,10 +22,10 @@ public class FlightGraph {
 
 
     /**
-     * gaseste traseul(algoritmul BFS) cu escale si il returneaza sub forma unei liste de zboruri.
-     * daca nu se va gasi un traseu ,se va returna lista vida
+     * finds the route (BFS algorithm) with stops and returns it in the form of a list of flights.
+     * if no route is found, the empty list will be returned
      */
-    public List<Flight> findPath(String from, String to, List<Flight> flights) {
+    public List<Flight> findPath(String from, String to) {
         List<Flight> result = new ArrayList<>();
 
         Flight directFlight = this.directCase(from, to);
@@ -68,7 +68,7 @@ public class FlightGraph {
 
 
     /**
-     * verific situatia zborului direct
+     * verifies the direct flight situation
      */
     public Flight directCase(String from, String to) {
         for (FlightNode node : this.nodes)
@@ -78,7 +78,7 @@ public class FlightGraph {
     }
 
     /**
-     * marchez nodurile ca nevizitate
+     *  marks all nodes as unvisited
      */
     public void setUnvisited() {
         for (FlightNode node : this.nodes)
@@ -86,7 +86,7 @@ public class FlightGraph {
     }
 
     /**
-     * gasesc nodul de la care incep cautarea
+     *  finds the starting node for the search
      */
     public FlightNode findFirst(String from) {
         for (FlightNode node : this.nodes)
@@ -97,7 +97,7 @@ public class FlightGraph {
 
 
     /**
-     * metoda care construieste solutia
+     * method that builds the final solution
      */
     public List<Flight> constructSolution(FlightNode first, FlightNode current) {
         List<Flight> result = new ArrayList<>();

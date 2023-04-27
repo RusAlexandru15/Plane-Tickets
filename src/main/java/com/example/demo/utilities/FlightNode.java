@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/** the class that represents the node with all its adjacent information */
+
 public class FlightNode {
     private Flight info;
     private FlightNode parent;
@@ -49,7 +51,7 @@ public class FlightNode {
 
     //FAC EQUALS IN FUNCTIE DR FROM SI TO
     //MODIFICA DIRECT IN this.info== other.info
-    /** compar egalitatea dupa campul info care e un Flight*/
+    /** compares the equality according to the info field which is a Flight*/
     public boolean equals(Object obj) {
 
         if (obj == this) {
@@ -65,7 +67,7 @@ public class FlightNode {
 
 
     //UNDE VERIFICI DISPONIBILITATEA???
-    /** genereaza vecinii unui nod*/
+    /** generates the neighbors of a node from the flight list*/
     public void findNeighbours(List<Flight> flights)
     {
         for(Flight flight:flights){
@@ -74,6 +76,7 @@ public class FlightNode {
         }
     }
 
+    /** generates the neighbors of a node from the node list*/
     public void findNeighboursByNodes(List<FlightNode> nodes)
     {
         this.neighbours=new ArrayList<>();
@@ -83,11 +86,16 @@ public class FlightNode {
         }
     }
 
-
+    /**
+     * verifies the direct flight situation
+     */
     public Boolean isDirectFlight(String from, String to){
         return Objects.equals(this.info.getFrom(), from) && Objects.equals(this.info.getTo(), to);
     }
 
-
+    /** for printing the node */
+    public String toString(){
+        return this.getInfo().getFrom()+" "+this.getInfo().getTo() ;
+    }
 
 }
