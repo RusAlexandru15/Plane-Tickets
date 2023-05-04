@@ -11,6 +11,11 @@ public class TicketManager {
         this.tickets=new ArrayList<>();
     }
 
+    /** setter for  the managing list */
+    public void setTickets(List<PriceTickets> tickets) {
+        this.tickets = tickets;
+    }
+
     /** adds a ticket to the managing list */
     public void addElement(PriceTickets item){
        this.tickets.add(item);

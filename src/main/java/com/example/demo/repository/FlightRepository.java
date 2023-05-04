@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight,Long> {
 
-
     /**Querry pentru gasire zborurilor in functie de zi :format dd-mm-yyyy */
     @Query("SELECT e FROM Flight e WHERE e.ziua = :ziua")
     List<Flight> findByDate(@Param("ziua") String ziua);

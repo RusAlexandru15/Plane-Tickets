@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Disponibility;
 import com.example.demo.model.Flight;
 import com.example.demo.model.Ticket;
 import com.example.demo.repository.DispRepository;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 /** service class for the tickets */
 @Service
@@ -47,7 +48,10 @@ public class TicketService {
             dispModifier = new DispManager();
         }
 
-        dispModifier.modifyDisponibility(t,flight, dispRepository);
+        Disponibility disponibility= dispModifier.modifyDisponibility(t,flight, dispRepository);
+        //salvez disponibilitatea
+        dispRepository.save(disponibility);
+
         return ticketRepository.save(t);
     }
 
@@ -98,7 +102,7 @@ public class TicketService {
                 Ticket currentTicket = (Ticket) element;
                 ticketRepository.save(currentTicket);
             }
-            return "Toate bilete zborului " + id + " ieftinite cu succes!";
+            return "Toate bilete zborului " + id + " reduce cu succes!";
         }
     }
 

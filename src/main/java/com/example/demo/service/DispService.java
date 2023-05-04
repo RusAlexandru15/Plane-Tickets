@@ -19,4 +19,7 @@ public class DispService {
         return dispRepository.findAll();
     }
 
+    //poti sa faci aici request sa reduca un loc din anumita clasa (eco/busines/first) si in controller @PUT_REQUEST
+
+
 }

@@ -57,7 +57,7 @@ public class FlightService {
 
     /**updates a flight by  id */
     /** id and iddisp cannot be updated!!!*/
-    public String updateFlightById(Long id, @NotNull Flight flightData){
+    public Flight updateFlightById(Long id, @NotNull Flight flightData){
         Flight currentFlight=flightRepository.findById(id).get();
 
         String ziua=flightData.getZiua();
@@ -75,7 +75,7 @@ public class FlightService {
         }
 
         flightRepository.save(currentFlight);
-        return "Flight "+id+" updated";
+        return currentFlight;
     }
 
 

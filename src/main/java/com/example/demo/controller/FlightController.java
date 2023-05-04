@@ -52,7 +52,7 @@ public class FlightController {
 
     /** modifies the flight with the given id having information received from a requestBody */
     @PutMapping("/flights/editFlight{id}")
-    public String updateFlightControlled(@PathVariable Long id, @RequestBody Flight flightData){
+    public Flight updateFlightControlled(@PathVariable Long id, @RequestBody Flight flightData){
         return flightService.updateFlightById(id,flightData);
     }
 

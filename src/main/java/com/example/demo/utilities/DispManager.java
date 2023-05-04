@@ -22,7 +22,7 @@ public class DispManager {
 
     /**  This method modifies a  disponibility entity whenever a new Tickets is saved
      * after buying a ticket , the number of available seats corresponding to a certain class(Eco/Business/First) must decrease */
-    public void modifyDisponibility(Ticket ticket,Flight flight,DispRepository dispRepository){
+    public Disponibility modifyDisponibility(Ticket ticket,Flight flight,DispRepository dispRepository){
        Disponibility disponibility=dispRepository.findById(flight.getDisponibilityID()).get();
 
         long nrEco=disponibility.getNrEco();
@@ -35,7 +35,7 @@ public class DispManager {
             case "business"-> {nrBus--; disponibility.setNrBus(nrBus); }
             case "intai"-> {nrFirst--; disponibility.setNrFirst(nrFirst); }
         }
-        dispRepository.save(disponibility);
+        return disponibility;
     }
 
 
