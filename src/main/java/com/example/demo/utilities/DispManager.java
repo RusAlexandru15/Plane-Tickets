@@ -31,9 +31,9 @@ public class DispManager {
 
 
         switch (ticket.getClasa()) {
-            case "economica"-> { nrEco--; disponibility.setNrEco(nrEco);}
+            case "eco"-> { nrEco--; disponibility.setNrEco(nrEco);}
             case "business"-> {nrBus--; disponibility.setNrBus(nrBus); }
-            case "intai"-> {nrFirst--; disponibility.setNrFirst(nrFirst); }
+            case "first"-> {nrFirst--; disponibility.setNrFirst(nrFirst); }
         }
         return disponibility;
     }
