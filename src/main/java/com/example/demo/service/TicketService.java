@@ -6,7 +6,7 @@ import com.example.demo.model.Ticket;
 import com.example.demo.repository.DispRepository;
 import com.example.demo.repository.FlightRepository;
 import com.example.demo.repository.TicketRepository;
-import com.example.demo.utilities.DispManager;
+import com.example.demo.bussinessLogic.DispManager;
 import com.example.demo.utilities.TicketManager;
 import com.example.demo.utilities.PriceTickets;
 import org.springframework.beans.factory.annotation.Autowired;

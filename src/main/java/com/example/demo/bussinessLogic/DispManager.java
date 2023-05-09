@@ -1,4 +1,4 @@
-package com.example.demo.utilities;
+package com.example.demo.bussinessLogic;
 import com.example.demo.model.Disponibility;
 import com.example.demo.model.Flight;
 import com.example.demo.model.Ticket;

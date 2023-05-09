@@ -1,5 +1,6 @@
 package com.example.demo;
 
+
 import com.example.demo.model.Flight;
 
 import com.example.demo.repository.DispRepository;
@@ -68,11 +69,10 @@ public class TestZboruri {
 
     /** metoda de test pentru creearea unui zbor  */
     @Test
-    public void testNewFlight(){
-        Flight newFlight=new Flight(5L, "ziua", "viena", "berlin", 80L);
+    public void testNewFlightV1(){
+        Flight newFlight=new Flight(5L, "23-02-23", "viena", "sibiu", 80L);
 
         when(flightRepository.save(newFlight)).thenReturn(newFlight);
-
 
         Flight addedFlight= flightService.createFlight(newFlight);
 
@@ -80,9 +80,22 @@ public class TestZboruri {
 
         Assertions.assertEquals(5, addedFlight.getIdZbor());
         Assertions.assertEquals("viena",  addedFlight.getFrom());
-        Assertions.assertEquals("berlin",  addedFlight.getTo());
-
+        Assertions.assertEquals("sibiu",  addedFlight.getTo());
     }
+
+
+    /** metoda de test pentru creearea unui zbor (input-ul nu e corect si zborul va fi null  ) */
+    @Test
+    public void testNewFlightV2(){
+        Flight newFlight=new Flight(5L, "23-02", "viena", "sibiu", 80L);
+
+        when(flightRepository.save(newFlight)).thenReturn(newFlight);
+
+        Flight addedFlight= flightService.createFlight(newFlight);
+
+        Assertions.assertNull(addedFlight);
+    }
+
 
     /** metoda de test pentru actualizarea unui zbor (plecare + sosire)  */
     @Test

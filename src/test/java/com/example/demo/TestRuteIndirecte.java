@@ -3,11 +3,9 @@ package com.example.demo;
 import com.example.demo.model.Flight;
 import com.example.demo.utilities.FlightFinder;
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

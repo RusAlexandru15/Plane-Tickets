@@ -1,13 +1,16 @@
 package com.example.demo.service;
 
+import com.example.demo.bussinessLogic.FlightValidator;
 import com.example.demo.model.Flight;
 import com.example.demo.repository.DispRepository;
 import com.example.demo.repository.FlightRepository;
-import com.example.demo.utilities.DispManager;
+import com.example.demo.bussinessLogic.DispManager;
+
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
 
 /** service class for the flights */
 @Service
@@ -17,6 +20,8 @@ public class FlightService {
     private FlightRepository flightRepository;
     @Autowired
     private DispRepository dispRepository;
+
+    private FlightValidator flightValidator;
 
 
     /**selects all the flights from DB*/
@@ -49,13 +54,25 @@ public class FlightService {
     public Flight createFlight(Flight flight)
     {
         DispManager dispGenerator=new DispManager();
-        dispGenerator.createDisponibility(flight,dispRepository);
 
+        String ziua=flight.getZiua();
+        String from=flight.getFrom();
+        String to=flight.getTo();
+
+        if (flightValidator == null) {
+            flightValidator = new FlightValidator();
+        }
+
+        //verifica datele de intrare daca sunt corecte
+        if(!flightValidator.validateFligh(ziua,from,to))
+            return null;
+
+        dispGenerator.createDisponibility(flight,dispRepository);
         return flightRepository.save(flight);
     }
 
 
-    /**updates a flight by  id */
+    /**updates a flight by  id
     /** id and iddisp cannot be updated!!!*/
     public Flight updateFlightById(Long id, @NotNull Flight flightData){
         Flight currentFlight=flightRepository.findById(id).get();
@@ -87,7 +104,6 @@ public class FlightService {
       dispRepository.deleteById(iddisp);
       return "Flight " +id + " was deleted";
     }
-
 
 
 
