@@ -42,6 +42,13 @@ public class FlightController {
         return flightService.getFlightsByArrival(to);
     }
 
+    /** returns all flights from the indirect flight */
+    @GetMapping("/flights/bestPath/{from}/{to}")
+    public  List<Flight> findBestPathControlled(@PathVariable String from,@PathVariable String to)
+    {
+        return flightService.indirectFlights(from,to);
+    }
+
 
     /** creates a new flight with information received from a requestBody */
     @PostMapping("/flights/new")

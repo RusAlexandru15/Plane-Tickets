@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class TicketController {
     @Autowired
     TicketService ticketService;
@@ -25,6 +26,13 @@ public class TicketController {
     public List<Ticket> getTicketByFlightControlled(@PathVariable Long id){
         return  ticketService.getTicketsByFlightID(id);
     }
+
+    /** returns the list of tickets related to the client with the given id */
+    @GetMapping("/tickets/ticketsByClient{id}")
+    public List<Ticket> getTicketByClientControlled(@PathVariable Long id){
+        return  ticketService.getTicketsByClientID(id);
+    }
+
 
     /** price all flight tickets with the given id */
     @PutMapping("/tickets/increaseTicketsByFlight{id}")

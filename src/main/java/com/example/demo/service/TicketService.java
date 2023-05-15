@@ -37,6 +37,14 @@ public class TicketService {
     }
 
     /**
+     * selects all tickets by clientID
+     */
+    public List<Ticket> getTicketsByClientID(Long id) {
+        return ticketRepository.findByClientId(id);
+    }
+
+
+    /**
      * create new ticket
      */
     public Ticket createTicket(Ticket t) {

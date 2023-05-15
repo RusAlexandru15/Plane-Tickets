@@ -6,6 +6,8 @@ import com.example.demo.repository.DispRepository;
 import com.example.demo.repository.FlightRepository;
 import com.example.demo.bussinessLogic.DispManager;
 
+import com.example.demo.repository.TicketRepository;
+import com.example.demo.utilities.FlightFinder;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,12 @@ public class FlightService {
     private FlightRepository flightRepository;
     @Autowired
     private DispRepository dispRepository;
+    @Autowired
+    private TicketRepository ticketRepository;
 
     private FlightValidator flightValidator;
 
+    private FlightFinder flightFinder;
 
     /**selects all the flights from DB*/
     public List<Flight> getFlights(){
@@ -77,6 +82,10 @@ public class FlightService {
     public Flight updateFlightById(Long id, @NotNull Flight flightData){
         Flight currentFlight=flightRepository.findById(id).get();
 
+        if (flightValidator == null) {
+            flightValidator = new FlightValidator();
+        }
+
         String ziua=flightData.getZiua();
         String from=flightData.getFrom();
         String to=flightData.getTo();
@@ -91,18 +100,33 @@ public class FlightService {
             currentFlight.setTo(to);
         }
 
+        //verifica datele de intrare daca sunt corecte
+        if(!flightValidator.validateFligh(ziua,from,to))
+            return null;
+
         flightRepository.save(currentFlight);
         return currentFlight;
     }
 
 
-    /** delete a flight by id and its disponibility*/
+    /** delete a flight by id and its disponibility
+     * also delelte all the tickets and disponibility associated*/
     public String deleteFlightByID(Long id) {
         Flight currentFlight=flightRepository.findById(id).get();
         Long iddisp=currentFlight.getDisponibilityID();
       flightRepository.deleteById(id);
       dispRepository.deleteById(iddisp);
+      ticketRepository.deleteByIdZbor(id);
       return "Flight " +id + " was deleted";
+    }
+
+    /** finds the indirect routes using the utility class FlightFinder */
+    public List<Flight> indirectFlights(String from,String to){
+        if (flightFinder == null) {
+            flightFinder = new FlightFinder();
+        }
+        flightFinder.setAllFlights(flightRepository.findAll());
+        return flightFinder.findBestPath(from,to);
     }
 
 

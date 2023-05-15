@@ -14,12 +14,20 @@ public class FlightValidator {
             "viena",
             "salzburg",
             "linz",
+            "berlin",
+            "munich",
             "graz",
             "milano",
             "roma",
             "torino",
             "palermo",
-            "bergamo");
+            "bergamo",
+            "paris",
+            "lion",
+            "madrid",
+            "copenhaga",
+            "lisabona",
+            "valencia");
 
     /** check the correctness of the input data for creating a flight  */
     public boolean validateFligh(String ziua,String from,String to)
