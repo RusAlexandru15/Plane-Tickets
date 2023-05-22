@@ -122,9 +122,9 @@ public class FlightService {
 
     /** finds the indirect routes using the utility class FlightFinder */
     public List<Flight> indirectFlights(String from,String to){
-        if (flightFinder == null) {
+        //if (flightFinder == null) {
             flightFinder = new FlightFinder();
-        }
+        //}
         flightFinder.setAllFlights(flightRepository.findAll());
         return flightFinder.findBestPath(from,to);
     }

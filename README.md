@@ -54,6 +54,8 @@ TicketController
  UserController
  @GetMapping("/users") :  returneaza toti clientii din  baza de date
  @PostMapping("/users/new"): creeaza un user nou cu informatii primite dintr-un requestBody
+ @PutMapping("/users/editUser{id}"):  modifica utilizatoru cu id-ul dat cu informatii primite dintr-un requestBody
+ @DeleteMapping("/users/deleteUser{id}") : sterge utilizatorul cu id-ul dat
 ## Detalii de implementare
 Logica aplicatiei se foloseste in cadrul claselor Service.
 Clasele Utilitare:
@@ -65,6 +67,8 @@ DispManager:
  Clasa FlightGraph contine o lista de noduri FlightNode.Am implementat algortimul BFS pentru gasirea zborurilor indirecte in metoda findPath.Ca rezultat se obtine lista de zboruri sau null in cazul in care nu exista ruta intre doua noduri.Inainte de traversarea se verifica situatia zborului direct (exp: daca se doreste deplasarea de la Bucuresti la Londra ,dar exista deja un zbor in lista initiala).Parcurgerea grafului necesita o structura de tip coada (fifo) in care se adauga doar nodurile nevizitate ,alaturi de vecinii lor.Testarea (compararea cu destinatia dorita se face in momentul scoaterii din coada a nodului curent).Metoda constructSolution alcatuieste ruta in intregime folosindu-se de relatia parinte dintre noduri.Va construi de la inceput spre final,deci va trebui inversata inainte sa o returnam.
  Clasa FlightFinder retine ca atribute lista zborurilor si isi genereaza graful pentru cautare(respectand principiul singleton).Aceasta are o singura metoda findBestPath cu doi parametrii de tip String(nume plecare si nume destinatie) care returneaza lista zborurilor pentru ruta indirecta.
  
+ Clasa FlightValidator are rolul verifica inputu-ul administratorului pentru creearea unui zbor nou.Se verifica string-ul departure si arrival (sa nu fie identice si sa apartina listei de locatii inregistrate).Data zborului trebuie sa respecte formatul zz-ll-aaaa.
+ 
 
 Observer Desing Pattern:
    Am folosit acest pattern pentru aplicarea de scumpiri/reduceri asupra preturilor biletelor.
@@ -74,6 +78,22 @@ Observer Desing Pattern:
    
 Principiul singleton:
   Entitatille claselor utilitare (cum ar fi TicketManager) se instantia doar o singura data in tot procesul aplicatiei. 
+  
+  ## Frontend
+  Frontend-ul a fost realizat in Angular.Angular este un framework pentru construirea de aplicații web mobile și desktop.Pagina principala se imparte in componente (fiecare avand un fisier .ts pentru logica ,un fisier .html pentru prezentare si un fisier.css pentru stil).
+  Toate componentele sunt centrate intr-un component container (admin-container) .Ele sunt vizibile in functie de cine se autentifica (client sau admin).
+  
+  Pagina administratorului:  contine 3 subcomponente :
+      1)app-flight-list : E un tabel in care apar toate zborurile disponibile. In aceasta zona
+      se poate efectua stergerea si actualizarea unui zbor (pentru actualizare se completeaza cu datele noi direct in tabel).Daca nu se respecta formatul specificat pentru data,decolare si aterizare, actualizarea nu va avea efect.Dupa stergerea unui zbor,se vor sterge si biletele aferente. 
+      2)app-create-flight: Cuprinde 4 text field-uri(data ,decolare,aterizare,disponibilitate) pe care administratorul trebuie sa le completeze pentru creearea unui zbor nou.
+      3)app-disps-view : E un tabel in care administratorul poate analiza disponibilitatile zborurilor( cate locuri libere au ramas la clasele eco,bussiness si first si pretul de baza).
+      
+Pagina clientului contine urmatoarele:  
+componenta app-client-flight-list : care contine toate zborurile si 2 campuri pentru filtrarea lor in functie de plecare sau sosire. In aceasta zona clientul poate sa achizitioneze bilete de calatorie.Bilete sunt afisate mai jos dupa apasarea butonului "My Tickets".
+In finalul paginii apare componenta zborurilor indirecte care afiseaza seria calatoriilor care implica escale.Clientul trebuie sa introduca locul plecarii si destinatia dorita.
+
+Entitatiile zbor,client ,disponibilitate si bilet au fost declarate si exportate ca si clase typescript.Comunicare cu server-ul se realizeaza prin intermediul claselor service(fiecarei entitati ii corespunde o clasa service).Metodele acestor clase  acceseaza endpoint-urile declarate in backend cu ajutorul unui camp privat de tipul HttpClient.
 
 
 
