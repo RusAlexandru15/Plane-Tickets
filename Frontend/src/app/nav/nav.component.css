@@ -1,0 +1,17 @@
+.navbar{
+    display: flex;
+    background-color:rgb(45, 138, 124);
+}
+.site-name{
+    display: 5px 30px;
+    background-color:rgb(45, 138, 124);
+}
+.site-menu{
+    display: 10px 30px;
+    margin-right:700px;
+}
+a{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    margin:0px 10px;
+}

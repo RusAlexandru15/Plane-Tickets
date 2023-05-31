@@ -1,0 +1,46 @@
+<!--
+  isLoggedIn - 0 nelogat
+  isLoggedIn - 1 admin
+  isLoggedIn - 2 client
+-->
+<div class="admin-login" *ngIf="isLoggedIn==0">
+  <h2>Blue Line Club</h2>
+  <h2>&nbsp;</h2>
+  <form (submit)="login()">
+    <label>
+      <span>Name:</span>
+      <input type="text" [(ngModel)]="name" name="name">
+    </label>
+
+    <label>
+      <span>Password:</span>
+      <input type="password" [(ngModel)]="password" name="password">
+    </label>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <img src="assets/images/plane3.jpg" alt="">
+</div>
+
+<!-- ZONA ADMIN -->
+
+<div *ngIf="isLoggedIn==1">
+  <div>
+    <app-flight-list>
+    </app-flight-list>
+    <app-create-flight></app-create-flight>
+    <app-admin-disps-view></app-admin-disps-view>
+  </div>
+</div>
+
+
+<!-- ZONA CLIENT -->
+
+<div *ngIf="isLoggedIn==2">
+  <h3> Welcome {{ userName }} </h3>
+
+  <app-client-flight-list [userId]="userId" [userName]="userName"></app-client-flight-list>
+  <app-client-flight-finder></app-client-flight-finder>
+
+</div>

@@ -1,0 +1,57 @@
+<h2> Flight list </h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> ID </th>
+      <th> DATE </th>
+      <th> DEPARTURE </th>
+      <th> ARRIVAL </th>
+      <th> ID_DISP </th>
+      <th> Update </th>
+      <th> Delete </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of flights; let i = index">
+      <td>{{flight.idZbor}}</td>
+      <td>
+        <input type="text" [(ngModel)]="flight.ziua ">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="flight.from">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="flight.to">
+      </td>
+      <td>{{flight.disponibilityID}}</td>
+
+      <td>
+        <button (click)="updateFlight(flight.idZbor)" class="btn btn-success"> Update </button>
+      </td>
+
+      <td>
+        <button (click)="deleteFlight(flight.idZbor)" class="btn btn-warning"> Delete </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-success" (click)="onClick()"> REFRESH </button>
+
+
+<!--
+    <tbody>
+        <tr *ngFor="let flight of flights " >
+            <td>{{flight.idZbor}} </td>
+            <td>{{flight.ziua}} </td>
+            <td>{{flight.from}} </td>
+            
+            <td>{{flight.to}} </td>
+            <td>{{flight.disponibilityID}} </td>
+            <td>
+                 <button (click)="updateFlight(flight.idZbor)" class="btn btn-success"> Update </button>
+            </td>
+        </tr>
+    </tbody>
+
+-->

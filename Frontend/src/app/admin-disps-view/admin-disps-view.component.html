@@ -1,0 +1,24 @@
+<h2> Disponibilities </h2>
+
+<button (click)="showDisps()" class="btn btn-success"> Show Disps </button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> NR_ECO </th>
+            <th> NR_BUSSINESS </th>
+            <th> NR_FIRST </th>
+            <th> BASE_PRICE </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let disp of disps ">
+            <td>{{disp.iddisp}} </td>
+            <td>{{disp.nrEco}} </td>
+            <td>{{disp.nrBus}} </td>
+            <td>{{disp.nrFirst}} </td>
+            <td>{{disp.basePrice}} </td>
+        </tr>
+    </tbody>
+</table>

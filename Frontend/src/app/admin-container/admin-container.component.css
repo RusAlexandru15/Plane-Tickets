@@ -1,0 +1,51 @@
+.admin-login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-login label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.admin-login label>span {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100px;
+  text-align: right;
+}
+
+.admin-login input[type="text"],
+.admin-login input[type="password"] {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-login button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff8800;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+h2 {
+  margin-left: 500px;
+}
